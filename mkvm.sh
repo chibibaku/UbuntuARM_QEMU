@@ -1,13 +1,11 @@
 #!/bin/bash
 
-
 echo " == ====================================== == "
 echo " ==    Welcome to UbuntuARM VM maker !!    == "
 echo " ==    This script is 100% opens-source    == "
 echo " == If find bug(s) send it to github issue == "
 echo " == ====================================== == "
 echo " "
-
 
 echo -n "Please input VM username : "
 read username

@@ -51,7 +51,7 @@ echo "Configure start.sh"
 chmod +x ./start.sh
 
 echo "Remove trash file..."
-rm cloud.new.txt
+#rm cloud.new.txt
 #sudo apt purge cloud-image-utils
 
 echo "All tasks done! ./start.sh to start VM"

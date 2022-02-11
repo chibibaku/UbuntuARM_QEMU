@@ -41,11 +41,11 @@ dd if=/dev/zero of=flash1.img bs=1M count=64 &> /dev/null
 
 echo "Generating cloud-init file from Username & Password..."
 touch cloud.txt
-echo "#cloud-config" >> cloud.new.txt
-echo "user: $username" >> cloud.new.txt
-echo "password: $password" >> cloud.new.txt
-echo "chpasswd: { expire: False }" >> cloud.new.txt
-echo "ssh_pwauth: True" >> cloud.new.txt
+echo "#cloud-config" >> cloud.txt
+echo "user: $username" >> cloud.txt
+echo "password: $password" >> cloud.txt
+echo "chpasswd: { expire: False }" >> cloud.txt
+echo "ssh_pwauth: True" >> cloud.txt
 cloud-localds --disk-format qcow2 cloud.img cloud.txt &> /dev/null
 
 echo "Configure start.sh"
@@ -53,6 +53,6 @@ chmod +x ./start.sh
 
 echo "Remove trash file..."
 rm cloud.txt
-sudo apt purge cloud-image-utils
+#sudo apt purge -y cloud-image-utils
 
 echo "All tasks done! ./start.sh to start VM"

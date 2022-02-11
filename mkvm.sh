@@ -11,13 +11,13 @@ echo " "
 
 echo -n "Please input VM username : "
 read username
-if $username="" ; then
+if [ "$username" = "" ] ; then
   echo "Do not leave this field empty!"
   exit
 fi
 echo -n "Please input VM password : "
 read password
-if $password="" ; then
+if [ "$password" = "" ] ; then
   echo "Do not leave this field empty!"
   exit
 fi

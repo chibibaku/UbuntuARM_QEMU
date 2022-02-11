@@ -1,13 +1,14 @@
 #!/bin/bash
 
-username = "user"
-password = "pass"
+username="user"
+password="pass"
 
 echo " == ====================================== == "
 echo " ==    Welcome to UbuntuARM VM maker !!    == "
 echo " ==    This script is 100% opens-source    == "
 echo " == If find bug(s) send it to github issue == "
 echo " == ====================================== == "
+echo " "
 
 
 echo -n "Please_input_VM_username(default 'user'):"

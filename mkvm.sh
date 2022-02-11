@@ -70,4 +70,4 @@ rm QEMU_EFI.fd
 
 echo ""
 
-echo "All tasks done! ./start.sh to start VM
+echo "All tasks done! ./start.sh to start VM"

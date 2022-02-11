@@ -65,8 +65,9 @@ echo ""
 
 echo "Remove trash file..."
 rm cloud.txt
+rm QEMU_EFI.fd
 #sudo apt purge -y cloud-image-utils
 
 echo ""
 
-echo "All tasks done! ./start.sh to start VM"
+echo "All tasks done! ./start.sh to start VM

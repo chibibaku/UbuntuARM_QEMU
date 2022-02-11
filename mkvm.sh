@@ -39,19 +39,20 @@ dd if=/dev/zero of=flash0.img bs=1M count=64 &> /dev/null
 dd if=QEMU_EFI.fd of=flash0.img conv=notrunc &> /dev/null
 dd if=/dev/zero of=flash1.img bs=1M count=64 &> /dev/null
 
-echo "Replace Username & Password..."
-cp cloud.txt cloud.new.txt  &> /dev/null
+echo "Generating cloud-init file from Username & Password..."
+touch cloud.txt
+echo "#cloud-config" >> cloud.new.txt
 echo "user: $username" >> cloud.new.txt
 echo "password: $password" >> cloud.new.txt
-#sed -e 's/user/$username/' cloud.new.tx &> /dev/null
-#sed -e 's/password/$password/' cloud.new.txt &> /dev/null
-cloud-localds --disk-format qcow2 cloud.img cloud.new.txt &> /dev/null
+echo "chpasswd: { expire: False }" >> cloud.new.txt
+echo "ssh_pwauth: True" >> cloud.new.txt
+cloud-localds --disk-format qcow2 cloud.img cloud.txt &> /dev/null
 
 echo "Configure start.sh"
 chmod +x ./start.sh
 
 echo "Remove trash file..."
-#rm cloud.new.txt
-#sudo apt purge cloud-image-utils
+rm cloud.txt
+sudo apt purge cloud-image-utils
 
 echo "All tasks done! ./start.sh to start VM"

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-username="user"
-password="pass"
 
 echo " == ====================================== == "
 echo " ==    Welcome to UbuntuARM VM maker !!    == "
@@ -11,10 +9,18 @@ echo " == ====================================== == "
 echo " "
 
 
-echo -n "Please_input_VM_username(default 'user'):"
+echo -n "Please input VM username : "
 read username
-echo -n "Please_input_VM_password(default 'pass'):"
+if $username="" ; then
+  echo "Do not leave this field empty!"
+  exit
+fi
+echo -n "Please input VM password : "
 read password
+if $password="" ; then
+  echo "Do not leave this field empty!"
+  exit
+fi
 
 echo "Update package lists..."
 sudo apt update &> /dev/null
@@ -35,8 +41,10 @@ dd if=/dev/zero of=flash1.img bs=1M count=64 &> /dev/null
 
 echo "Replace Username & Password..."
 cp cloud.txt cloud.new.txt  &> /dev/null
-sed -e 's/user/$username/' cloud.new.tx &> /dev/null
-sed -e 's/password/$password/' cloud.new.txt &> /dev/null
+echo "user: $username" >> cloud.new.txt
+echo "password: $password" >> cloud.new.txt
+#sed -e 's/user/$username/' cloud.new.tx &> /dev/null
+#sed -e 's/password/$password/' cloud.new.txt &> /dev/null
 cloud-localds --disk-format qcow2 cloud.img cloud.new.txt &> /dev/null
 
 echo "Configure start.sh"

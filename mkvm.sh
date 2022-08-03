@@ -2,7 +2,7 @@
 
 echo " == ====================================== == "
 echo " ==    Welcome to UbuntuARM VM maker !!    == "
-echo " ==    This script is 100% opens-source    == "
+echo " ==    This script is 100% open-source     == "
 echo " == If find bug(s) send it to github issue == "
 echo " == ====================================== == "
 echo " "
